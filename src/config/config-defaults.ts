@@ -33,7 +33,6 @@ export const DEFAULT_MODELS: ModelsConfig = {
 };
 
 export const DEFAULT_GLOBAL: GlobalConfig = {
-  obsidian_vault: null,
   context_dir: join(homedir(), '.config', 'orch', 'context'),
   worktrees_dir: join(homedir(), '.config', 'orch', 'worktrees'),
 };

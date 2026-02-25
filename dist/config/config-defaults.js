@@ -28,7 +28,6 @@ export const DEFAULT_MODELS = {
     reviewers: ['codex', 'gemini', 'claude'],
 };
 export const DEFAULT_GLOBAL = {
-    obsidian_vault: null,
     context_dir: join(homedir(), '.config', 'orch', 'context'),
     worktrees_dir: join(homedir(), '.config', 'orch', 'worktrees'),
 };

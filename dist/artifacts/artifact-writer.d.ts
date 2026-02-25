@@ -13,4 +13,4 @@ export declare function writeFailure(paths: ArtifactPaths, attemptNumber: number
 export declare function writeReview(paths: ArtifactPaths, modelName: string, content: string): void;
 export declare function writeDiffstat(paths: ArtifactPaths, diffstat: string): void;
 export declare function writeSummary(paths: ArtifactPaths, record: TaskRecord, reviewOutputs: Record<string, string>): void;
-export declare function writeSummaryToObsidian(obsidianVault: string | null, taskId: string, summaryContent: string): void;
+export declare function writeSummaryToContextDir(contextDir: string, taskId: string, summaryContent: string): void;

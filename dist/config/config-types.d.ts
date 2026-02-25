@@ -20,7 +20,6 @@ export interface ModelsConfig {
     reviewers: ModelName[];
 }
 export interface GlobalConfig {
-    obsidian_vault: string | null;
     context_dir: string;
     worktrees_dir: string;
 }

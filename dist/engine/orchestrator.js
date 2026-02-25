@@ -9,7 +9,7 @@ import { runRepairer } from './repairer.js';
 import { runReviewers } from './reviewer.js';
 import { runPolicyChecks } from '../policy/policy-runner.js';
 import { getDiffStat } from '../worktree/worktree-manager.js';
-import { getArtifactPaths, ensureArtifactDirs, writeFailure, writeDiffstat, writeSummary, writeSummaryToObsidian, } from '../artifacts/artifact-writer.js';
+import { getArtifactPaths, ensureArtifactDirs, writeFailure, writeDiffstat, writeSummary, writeSummaryToContextDir, } from '../artifacts/artifact-writer.js';
 import { ClaudeAdapter } from '../adapters/claude-adapter.js';
 import { CodexAdapter } from '../adapters/codex-adapter.js';
 import { GeminiAdapter } from '../adapters/gemini-adapter.js';
@@ -209,12 +209,12 @@ export async function runTask(record, config) {
         }
         // Write summary (always, regardless of terminal state)
         writeSummary(paths, current, reviewResult.reviews);
-        writeSummaryToObsidian(config.global.obsidian_vault, current.task_id, readFileSync(paths.summaryFile, 'utf8'));
+        writeSummaryToContextDir(config.global.context_dir, current.task_id, readFileSync(paths.summaryFile, 'utf8'));
     }
     // Write summary even if we ended without reviewing
     if (!['DONE', 'REVIEWING'].includes(record.status)) {
         writeSummary(paths, current, {});
-        writeSummaryToObsidian(config.global.obsidian_vault, current.task_id, readFileSync(paths.summaryFile, 'utf8'));
+        writeSummaryToContextDir(config.global.context_dir, current.task_id, readFileSync(paths.summaryFile, 'utf8'));
     }
     log.info('Task finished', { status: current.status });
     return current;

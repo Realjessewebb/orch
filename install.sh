@@ -65,11 +65,12 @@ GLOBAL_CONFIG="$ORCH_CONFIG/global.yaml"
 if [ ! -f "$GLOBAL_CONFIG" ]; then
   cat > "$GLOBAL_CONFIG" << 'EOF'
 # orch global config
-# Set obsidian_vault to your vault path to see all .md artifacts in Obsidian
-obsidian_vault: null
 
-# Where orch stores your knowledge base (memory, business context, skills)
-# context_dir: ~/.config/orch/context  # default
+# Where your knowledge base lives: MEMORY.md, business.md, skills/, notes/, runs/
+# Point this at a folder inside your Obsidian vault so everything is native there.
+# A symlink works great: ln -sf "/path/to/vault/orch" ~/.config/orch/context
+#
+# context_dir: ~/.config/orch/context   # default
 
 # Where orch creates git worktrees for agents
 # worktrees_dir: ~/.config/orch/worktrees  # default

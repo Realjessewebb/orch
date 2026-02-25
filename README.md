@@ -153,13 +153,30 @@ reviewers:
 
 ## Obsidian Integration
 
-All run summaries and review outputs are written as `.md` files. To see them in Obsidian:
+All context files and run summaries are plain `.md` files. The cleanest setup is to make `context_dir` a folder inside your vault — then everything lives there natively, no syncing needed.
 
-1. Edit `~/.config/orch/global.yaml`
-2. Set `obsidian_vault: /path/to/your/vault`
-3. Run summaries appear at `<vault>/orch/runs/<task-id>/summary.md`
+```bash
+# Create the orch folder inside your vault
+mkdir -p "/path/to/your/vault/orch"
 
-You can also symlink your Obsidian daily notes into `~/.config/orch/context/notes/` so the planner has access to your recent meeting notes.
+# Symlink ~/.config/orch/context → vault/orch
+ln -sf "/path/to/your/vault/orch" ~/.config/orch/context
+```
+
+That's it. Now in Obsidian you'll see:
+```
+vault/
+└── orch/
+    ├── MEMORY.md         ← your persistent brain
+    ├── business.md       ← business context
+    ├── skills/           ← reusable prompt templates
+    ├── notes/            ← meeting notes (or symlink daily notes here)
+    └── runs/             ← every task summary, auto-created after each run
+        └── <task-id>/
+            └── summary.md
+```
+
+Drop your meeting notes into `orch/notes/` and the planner will read the 7 most recent automatically.
 
 ---
 

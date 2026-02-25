@@ -25,9 +25,11 @@ export interface ModelsConfig {
 
 // Global config at ~/.config/orch/global.yaml
 export interface GlobalConfig {
-  obsidian_vault: string | null;
-  context_dir: string;   // defaults to ~/.config/orch/context
-  worktrees_dir: string; // defaults to ~/.config/orch/worktrees
+  // Where your knowledge base lives: MEMORY.md, business.md, skills/, notes/, runs/
+  // Point this at a folder inside your Obsidian vault and everything is native there.
+  // Default: ~/.config/orch/context
+  context_dir: string;
+  worktrees_dir: string;
 }
 
 // Full merged project config (all files combined)

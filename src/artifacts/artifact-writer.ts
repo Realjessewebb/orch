@@ -92,13 +92,13 @@ export function writeSummary(
   writeTextFile(paths.summaryFile, lines.join('\n'));
 }
 
-// Also write summary to Obsidian vault if configured
-export function writeSummaryToObsidian(
-  obsidianVault: string | null,
+// Write summary to context_dir/runs/<task-id>/summary.md
+// If context_dir is inside your Obsidian vault, this appears there natively.
+export function writeSummaryToContextDir(
+  contextDir: string,
   taskId: string,
   summaryContent: string
 ): void {
-  if (!obsidianVault) return;
-  const dest = join(obsidianVault, 'orch', 'runs', taskId, 'summary.md');
+  const dest = join(contextDir, 'runs', taskId, 'summary.md');
   writeTextFile(dest, summaryContent);
 }
